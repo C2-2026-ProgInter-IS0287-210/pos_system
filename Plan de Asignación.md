@@ -7,7 +7,7 @@ La siguiente distribución asigna la responsabilidad de implementación del sist
 Módulo Asignado: Contexto de Ventas
 Descripción: Encargado del núcleo transaccional principal del sistema, gestionando el ciclo de vida de una venta, los pagos y los cálculos matemáticos asociados.
 
-- Dominio (Entidades y Value Objects): Venta, LineaVenta, Pago, Recibo, Devolucion, Descuento.
+- Dominio (Entidades y Value Objects): Venta, LineaVenta, Pago, Recibo, Devolucion, Descuento, Money.
 
 - Dominio (Enumeradores): MetodoPago, EstadoVenta.
 
@@ -54,7 +54,7 @@ Descripción: Encargado de la base transversal del sistema, manejando los acceso
 
 - Dominio (Entidades): Usuario, Rol, Turno, Asistencia, Sucursal, ConfiguracionGlobal, GestorImagenes.
 
-- Dominio (Enumeradores): Permiso.
+- Dominio (Enumeradores): Permiso, Idioma, Moneda.
 
 - Aplicación (Casos de Uso): AutenticarUsuarioCasoUso, GestionarTurnoCasoUso, CargarConfiguracionCasoUso.
 
@@ -82,9 +82,9 @@ Descripción: Responsable del flujo de dinero en efectivo en el punto de venta (
 Módulo Asignado: Contexto de Informes, Carga Masiva y Presentación Principal
 Descripción: Encargado de la consolidación de datos, la importación de archivos externos y la orquestación de la interfaz gráfica principal donde se unen todos los módulos.
 
-- Dominio (Entidades): Informe, Dashboard.
+- Dominio (Entidades): Informe, Dashboard, Reporte.
 
-- Servicios (Carga Masiva): ImportadorDatos, ServicioImportacion (Interfaces).
+- Servicios (Carga Masiva): ServicioImportacion (Interface) e ImportadorDatos (Infraestructura).
 
 - Aplicación (Casos de Uso): GenerarInformeVentasCasoUso, GenerarDashboardCasoUso, ImportarProductosCasoUso, ImportarClientesCasoUso.
 

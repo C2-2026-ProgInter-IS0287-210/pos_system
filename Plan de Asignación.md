@@ -13,7 +13,7 @@ Descripción: Encargado del núcleo transaccional principal del sistema, gestion
 
 - Aplicación (Casos de Uso): IniciarVentaCasoUso, PagarVentaCasoUso, SuspenderVentaCasoUso, RecuperarVentaCasoUso, AnularVentaCasoUso, DividirCuentaCasoUso.
 
-- Interfaces y Servicios: ServicioVentas, ServicioPagos.
+- Interfaces y Servicios: ServicioVentas (y su impl), ServicioPagos (y su impl).
 
 - Infraestructura y Presentación: RepositorioVentasImpl, PanelVentas, ControladorVentas.
 
@@ -28,7 +28,7 @@ Descripción: Responsable de la gestión del catálogo de productos, el control 
 
 - Aplicación (Casos de Uso): ConsultarStockCasoUso, RealizarMovimientoCasoUso, VerificarReordenCasoUso.
 
-- Interfaces y Servicios: ServicioInventario.
+- Interfaces y Servicios: ServicioInventario (y su impl).
 
 - Infraestructura y Presentación: RepositorioProductosImpl, PanelInventario, ControladorInventario.
 
@@ -43,7 +43,7 @@ Descripción: Administra el abastecimiento del negocio mediante la relación con
 
 - Aplicación (Casos de Uso): CrearCompraCasoUso, RecibirMercanciaCasoUso, RegistrarPagoProveedorCasoUso, DepositarCasoUso, RetirarCasoUso, TransferirCasoUso.
 
-- Interfaces y Servicios: ServicioCompras.
+- Interfaces y Servicios: ServicioCompras (y su impl).
 
 - Infraestructura y Presentación: RepositorioComprasImpl, RepositorioBancosImpl, PanelCompras, ControladorCompras.
 
@@ -73,7 +73,7 @@ Descripción: Responsable del flujo de dinero en efectivo en el punto de venta (
 
 - Aplicación (Casos de Uso): AbrirCajaCasoUso, CerrarCajaCasoUso, RegistrarMovimientoCajaCasoUso, RegistrarClienteCasoUso, ActualizarClienteCasoUso.
 
-- Interfaces y Servicios: ServicioCaja.
+- Interfaces y Servicios: ServicioCaja (y su impl).
 
 - Infraestructura y Presentación: RepositorioCajaImpl, RepositorioClientesImpl, PanelCaja, ControladorCaja.
 
@@ -88,7 +88,7 @@ Descripción: Encargado de la consolidación de datos, la importación de archiv
 
 - Aplicación (Casos de Uso): GenerarInformeVentasCasoUso, GenerarDashboardCasoUso, ImportarProductosCasoUso, ImportarClientesCasoUso.
 
-- Interfaces y Servicios: ServicioInformes.
+- Interfaces y Servicios: ServicioInformes (y su impl).
 
 - Infraestructura y Presentación: RepositorioInformesImpl, ImportadorCSV, ImportadorExcel, VentanaPrincipal (Clase que integra todos los paneles y controladores).
 

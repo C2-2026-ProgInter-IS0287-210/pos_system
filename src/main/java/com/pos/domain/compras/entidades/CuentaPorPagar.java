@@ -1,7 +1,7 @@
 public class CuentaPorPagar {
     private Money monto;
-    private DateTime fechaEmision;
-    private DateTime fechaVencimiento;
+    private Date fechaEmision;
+    private Date fechaVencimiento;
     private EstadoPago estado;
     private Money saldoPendiente;
 

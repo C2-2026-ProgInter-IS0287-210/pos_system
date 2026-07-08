@@ -9,7 +9,7 @@ US-01: Gestión del ciclo de vida transaccional de una Venta
 Descripción Funcional:
 Como Cajero, el usuario requiere poder iniciar, procesar pagos y finalizar una venta, para poder facturar los productos a los clientes de forma eficiente.
 Descripción Técnica:
-Se debe orquestar el flujo desde la capa de Presentación (PanelVentas, ControladorVentas) invocando a los Casos de Uso (IniciarVentaCasoUso, PagarVentaCasoUso). Estos usarán el ServicioVentas y ServicioPagos para manipular el agregado principal (Venta, LineaVenta, Pago, Recibo) y persistir el estado (enum EstadoVenta) usando el RepositorioVentasImpl.
+Se debe orquestar el flujo desde la capa de Presentación (PanelVentas, ControladorVentas) invocando a los Casos de Uso (IniciarVentaCasoUso, PagarVentaCasoUso). Estos usarán el ServicioVentas y ServicioPagos (y sus respectivas implementaciones) para manipular el agregado principal (Venta, LineaVenta, Pago, Recibo) y persistir el estado (enum EstadoVenta) usando el RepositorioVentasImpl.
 Criterios de Aceptación:
 
 Dado que hay una venta iniciada, cuando se añaden productos, entonces el sistema debe actualizar el subtotal, impuestos y total usando el Value Object Money.
@@ -23,7 +23,7 @@ US-02: Gestión de Devoluciones y Descuentos
 Descripción Funcional:
 Como Cajero, el usuario requiere poder aplicar descuentos sobre el total o sobre líneas específicas, y procesar devoluciones de ventas anteriores, para gestionar políticas comerciales y garantías.
 Descripción Técnica:
-Requiere la implementación del Value Object Descuento asociado a LineaVenta. Adicionalmente, el modelado de la entidad Devolucion conectada a una Venta existente. Se apoyará en operaciones del ServicioVentas.
+Requiere la implementación del Value Object Descuento asociado a LineaVenta. Adicionalmente, el modelado de la entidad Devolucion conectada a una Venta existente. Se apoyará en operaciones del ServicioVentas (y su implementación).
 Criterios de Aceptación:
 
 Dado un descuento porcentual o monto fijo válido, cuando se aplica a una LineaVenta, entonces el subtotal debe recalcularse correctamente.
@@ -49,7 +49,7 @@ US-04: Registro de Movimientos Físicos de Inventario
 Descripción Funcional:
 Como Bodeguero, el usuario requiere registrar entradas, salidas y ajustes de inventario con un motivo justificado, para mantener la precisión entre el stock físico y del sistema.
 Descripción Técnica:
-Implementación de RealizarMovimientoCasoUso, que invoca al ServicioInventario para crear registros de MovimientoInventario asociados al enumerado TipoMovimiento (ENTRADA, SALIDA, AJUSTE) e impactando al Stock.
+Implementación de RealizarMovimientoCasoUso, que invoca al ServicioInventario (y su implementación) para crear registros de MovimientoInventario asociados al enumerado TipoMovimiento (ENTRADA, SALIDA, AJUSTE) e impactando al Stock.
 Criterios de Aceptación:
 
 Dado un producto válido, cuando se registra una ENTRADA por 50 unidades, entonces la cantidadActual del Stock debe incrementar exactamente en 50.
@@ -115,7 +115,7 @@ US-09: Operatividad y Cuadre de Caja Principal
 Descripción Funcional:
 Como Cajero, el usuario requiere abrir la caja al iniciar la jornada, registrar movimientos menores (ingresos/egresos de efectivo) y ejecutar el cierre o cuadre al finalizar, para garantizar el control del efectivo.
 Descripción Técnica:
-Coordinado por ControladorCaja invocando AbrirCajaCasoUso, CerrarCajaCasoUso y RegistrarMovimientoCajaCasoUso. Se fundamenta en ServicioCaja manejando la CajaPrincipal, MovimientoCaja y CierreCaja, apoyado por RepositorioCajaImpl.
+Coordinado por ControladorCaja invocando AbrirCajaCasoUso, CerrarCajaCasoUso y RegistrarMovimientoCajaCasoUso. Se fundamenta en ServicioCaja (y su implementación) manejando la CajaPrincipal, MovimientoCaja y CierreCaja, apoyado por RepositorioCajaImpl.
 Criterios de Aceptación:
 
 Dado un empleado sin caja asignada, cuando intenta iniciar una venta, el sistema lo bloquea exigiendo ejecutar AbrirCajaCasoUso primero.
@@ -141,7 +141,7 @@ US-11: Tablero de Indicadores (Dashboard) y Reportes
 Descripción Funcional:
 Como Gerente, el usuario requiere visualizar un panel principal con los KPI (Indicadores Clave) de ventas, compras e inventario, además de generar reportes detallados en PDF/Excel, para la toma de decisiones.
 Descripción Técnica:
-Construcción de los casos de uso GenerarInformeVentasCasoUso y GenerarDashboardCasoUso llamando al ServicioInformes. Las entidades son Informe y Dashboard. Conexión con RepositorioInformesImpl y RepositorioVentasImpl.
+Construcción de los casos de uso GenerarInformeVentasCasoUso y GenerarDashboardCasoUso llamando al ServicioInformes (y su implementación). Las entidades son Informe y Dashboard. Conexión con RepositorioInformesImpl y RepositorioVentasImpl.
 Criterios de Aceptación:
 
 Dado el requerimiento de cierre mensual, cuando se solicita el informe de ventas por fecha, entonces se genera una instancia de Informe con los totales correctos extraídos del periodo.

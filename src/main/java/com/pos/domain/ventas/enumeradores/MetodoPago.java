@@ -1,5 +1,7 @@
 package main.java.com.pos.domain.ventas.enumeradores;
 
-public class MetodoPago {
- 
-}
+public enum MetodoPago {
+EFECTIVO, 
+TARJETA 
+
+ };

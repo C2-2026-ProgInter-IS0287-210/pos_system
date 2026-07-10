@@ -2,6 +2,9 @@ package main.java.com.pos.domain.ventas.enumeradores;
 
 public enum MetodoPago {
 EFECTIVO, 
-TARJETA 
+TARJETA_CREDITO,
+TARJETA_DEBITO,
+TRANSFERENCIA,
+TARJETA_REGALO,
 
  };

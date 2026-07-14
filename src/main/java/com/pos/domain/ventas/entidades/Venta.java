@@ -3,7 +3,7 @@ package main.java.com.pos.domain.ventas.entidades;
 import java.util.Date;
 
 import main.java.com.pos.domain.ventas.enumeradores.EstadoVenta;
-import main.java.com.pos.domain.ventas.valueobjets.Money;
+import main.java.com.pos.domain.ventas.valueobjects.Money;
 
 public class Venta {
 

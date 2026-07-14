@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.ventas.valueobjets;
+package main.java.com.pos.domain.ventas.valueobjects;
 
 public class Descuento {
 

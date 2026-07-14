@@ -1,5 +1,5 @@
 package main.java.com.pos.domain.ventas.entidades;
-import main.java.com.pos.domain.ventas.valueobjets.Money;
+import main.java.com.pos.domain.ventas.valueobjects.Money;
 
 public class Devolucion {
 

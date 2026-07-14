@@ -1,6 +1,6 @@
 public enum Permiso{
-    ventas,
-    administrador,
-    gestionar_usuarioo,
-    gestionar_configuracion,
+    VENTAS,
+    ADMINISTRADOR,
+    GESTIONAR_USUARIO,
+    GESTIONAR_CONFIGURACION,
 }

@@ -21,4 +21,22 @@ public Dashboard(double ventasTotales,
   this.clientesAtendidos = clientesAtendidos;
 }
 
+public double getVentasTotales() {
+        return ventasTotales;
+    }
+
+    public int getCantidadVentas() {
+        return cantidadVentas;
+    }
+
+    public int getProductosVendidos() {
+        return productosVendidos;
+    }
+
+    public int getClientesAtendidos() {
+        return clientesAtendidos;
+    }
+
+
+
 

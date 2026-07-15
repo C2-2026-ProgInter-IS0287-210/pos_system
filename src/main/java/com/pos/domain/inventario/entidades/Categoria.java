@@ -1,4 +1,4 @@
-
+package main.java.com.pos.domain.inventario.entidades;
 class Categoria {
 
     private String nombre;

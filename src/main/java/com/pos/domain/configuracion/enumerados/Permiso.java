@@ -1,4 +1,5 @@
-public enum Permiso{
+ package main.java.com.pos.domain.configuracion.enumerados;
+ public enum Permiso{
     VENTAS,
     ADMINISTRADOR,
     GESTIONAR_USUARIO,

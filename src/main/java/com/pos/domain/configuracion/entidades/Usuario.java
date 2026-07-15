@@ -1,3 +1,6 @@
+package main.java.com.pos.domain.configuracion.entidades;
+
+import main.java.com.pos.domain.configuracion.enumerados.Permiso;
 public class Usuario{
     private String nombre;
     private String pin ;
@@ -13,8 +16,9 @@ public class Usuario{
     public boolean autenticar(String pinIngresado){
         return this.pin.equals(pinIngresado);
     }
+    boolean prueba;
     public boolean tienePermiso(Permiso permisos){
-        return Rol.tienePermiso(permisos);
+        return prueba;
     }
      public String getNombre(){
         return nombre;

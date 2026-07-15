@@ -1,3 +1,4 @@
+package main.java.com.pos.domain.compras.entidades;
 public class LineaCompra{
     private int cantidad;
     private Money precioUnitario;

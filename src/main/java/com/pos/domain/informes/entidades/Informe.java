@@ -10,10 +10,10 @@ public class Informe {
     private int cantidadVentas;
 
     public Informe(String titulo,
-                    LocalDate fechaInicio,
-                    LocalDate fechaFin,
-                    double totalVentas,
-                    int cantidadVentas) {
+    LocalDate fechaInicio,
+    LocalDate fechaFin,
+    double totalVentas,
+   int cantidadVentas) {
 
         this.titulo = titulo;
         this.fechaInicio = fechaInicio;
@@ -23,22 +23,22 @@ public class Informe {
     }
 
     public String getTitulo() {
-        return titulo;
+      return titulo;
     }
 
     public LocalDate getFechaInicio() {
-        return fechaInicio;
+     return fechaInicio;
     }
 
     public LocalDate getFechaFin() {
-        return fechaFin;
+      return fechaFin;
     }
 
     public double getTotalVentas() {
-        return totalVentas;
+     return totalVentas;
     }
 
     public int getCantidadVentas() {
-        return cantidadVentas;
+         return cantidadVentas;
     }
 }

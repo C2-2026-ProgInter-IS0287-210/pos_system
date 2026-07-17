@@ -1,5 +1,10 @@
-package main.java.com.pos.domain.compras.entidades;
-public class CuentaPorPagar {
+package com.pos.domain.compras.entidades;
+import java.util.Date;
+import com.pos.domain.compras.enumerados.EstadoPago;
+import com.pos.domain.ventas.valueobjets.*;
+
+public class CuentaPorPagar { 
+
     private Money monto;
     private Date fechaEmision;
     private Date fechaVencimiento;
@@ -9,5 +14,8 @@ public class CuentaPorPagar {
     public void pagar (Money monto){
         this.monto=monto;
     }
-    public Money calcularInteresesMoratorio(){}
+    public Money calcularInteresesMoratorio(){
+        this.saldoPendiente=this.saldoPendiente;
+        return this.saldoPendiente;
+    }
 }

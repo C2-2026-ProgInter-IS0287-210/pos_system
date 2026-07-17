@@ -1,4 +1,7 @@
-package main.java.com.pos.domain.compras.entidades;
+package com.pos.domain.compras.entidades;
+import com.pos.domain.ventas.valueobjets.*;
+import 
+
 public class LineaCompra{
     private int cantidad;
     private Money precioUnitario;
@@ -6,7 +9,7 @@ public class LineaCompra{
     private Money subtotal;
 
     public Money calcularSubtotal(){
-       this.subtotal = cantidad*precioUnitario;
-        return precioUnitario;
+       this.subtotal = subtotal;
+        return subtotal;
     }
 }

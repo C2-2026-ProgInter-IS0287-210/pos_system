@@ -1,4 +1,5 @@
-package main.java.com.pos.domain.compras.entidades;
+package com.pos.domain.compras.entidades;
+
 public class Proveedor {
     private String nombre;
     private String contacto;

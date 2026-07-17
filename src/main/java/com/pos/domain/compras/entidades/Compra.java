@@ -1,8 +1,10 @@
 // package main.java.com.pos.domain.compras.entidades;
-package main.java.com.pos.domain.compras.entidades;
+package com.pos.domain.compras.entidades;
 
-
-import main.java.com.pos.ventas.valueobjects;
+import java.util.Date;
+import com.pos.domain.compras.enumerados.EstadoCompra;
+import com.pos.domain.ventas.valueobjets.*;
+import com.pos.domain.compras.enumerados.LineaCompra;
 
 public class Compra {
     private String id;

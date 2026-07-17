@@ -1,3 +1,6 @@
+package com.pos.domain.bancos.entidades;
+import com.pos.domain.ventas.valueobjets.*;
+
 public class CuentaBancaria {
     private String numero;
     private String entidad;

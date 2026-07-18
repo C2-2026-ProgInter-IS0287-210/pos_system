@@ -9,14 +9,14 @@ public class Rol{
         this.nombre=nombre;
         this.permisos=permisos;
     }
-     boolean prueba;
-    public boolean tienePermiso(Permiso permisos){
-        return prueba;
+    public void agregarPermiso(Permiso p){
+       
+        
     }
 
-    public String getNombre(){
-        return nombre;
-    }
+ public void removerPermiso(Permiso p){
+
+ }
 
 
 }

@@ -1,4 +1,5 @@
 package main. java. com. pos. domain. clientes.entidades;
+import java.time.LocalDateTime;
 public class CuentaCredito {
    
     private double limiteCredito;

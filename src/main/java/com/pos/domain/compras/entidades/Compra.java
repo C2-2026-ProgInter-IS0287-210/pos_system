@@ -21,7 +21,7 @@ public class Compra {
     }
 
     public Money calcularTotal() {
-        this.total = subtotal - descuento;
+        Money total = new Money(0);
         return total;
     }
 }

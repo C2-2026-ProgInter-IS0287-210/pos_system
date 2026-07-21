@@ -10,6 +10,8 @@ private Money descuento;
 
 public void  modificarCantidad(int nuevaCantidad){//En proceso de implementacion / Sin logica
 
+
+
 }
 
 public void aplicarDescuento(Descuento desc){//En proceso de implementacion / Sin logica

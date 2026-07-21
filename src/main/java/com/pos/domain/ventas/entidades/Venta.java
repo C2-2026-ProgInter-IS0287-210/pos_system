@@ -14,19 +14,35 @@ public class Venta {
  private Money impuestos;
  private Money propina;
 
- public void suspender() {//En proceso de implementacion / Sin logica
+ public void suspender() {// En proceso de implementacion / Sin logica
+ 
+ estado = EstadoVenta.SUSPENDIDA;
 
  }
- public void recuperar() {//En proceso de implementacion / Sin logica
+
+ public void recuperar() {// En proceso de implementacion / Sin logica
+
+  estado = EstadoVenta.DEVUELTA;
 
  }
- public void anular(String motivo) {//En proceso de implementacion / Sin logica
+
+ public void anular(String motivo) {// En proceso de implementacion / Sin logica
+
+
+ estado = EstadoVenta.ANULADA;
 
  }
- public void dividirCuenta() {//En proceso de implementacion / Sin logica
+
+ public void dividirCuenta(int comensales, Money propina) {// En proceso de implementacion / Sin logica
+
 
  }
- public Money calcularTotal() {//En proceso de implementacion / Sin logica
+
+ public Money calcularTotal() {// En proceso de implementacion / Sin logica
+
+  
+
+
   return propina;// Variable temporal
  }
 

@@ -7,8 +7,11 @@ import main.java.com.pos.domain.ventas.entidades.Venta;
 
 public class ServicioVentas {
  
+
+ Venta pre;//Variable temporal
 public Venta iniciarVenta(){
 
+ return pre;
 }
 
 public void pagarVenta(Venta v, List <Pago> pagos){

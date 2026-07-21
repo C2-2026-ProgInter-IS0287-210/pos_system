@@ -3,6 +3,7 @@ package main.java.com.pos.presentation.controladores;
 import main.java.com.pos.domain.servicios.ServicioVentas;
 import main.java.com.pos.domain.ventas.entidades.Venta;
 
+
 public class ControladorVentas {
  
 private Venta ventaActual;

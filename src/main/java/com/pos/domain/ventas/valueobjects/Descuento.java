@@ -5,7 +5,7 @@ public class Descuento {
  private double porcentaje;
  private Money montoFijo;
 
- public Money aplicar() {//En proceso de implementacion / Sin logica
+ public Money aplicar(Money base) {//En proceso de implementacion / Sin logica
   return montoFijo;
 
  }

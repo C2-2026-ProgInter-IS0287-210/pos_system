@@ -28,17 +28,18 @@ public class Pago {
     this.cambio = new Money(0);
   }
 
-  boolean t;// Variable temporal
-
-  public boolean procesar() {// En proceso de implementacion / Sin logica
-
-    return t;
+  public boolean procesar() {
+    if (!validar()) {
+      return false;
+    }
+    return true;
 
   }
 
-  public boolean validar() {// En proceso de implementacion / Sin logica
-
-    return t;
+  public boolean validar() {
+    return metodo != null
+        && monto != null
+        && !monto.esCeroONegativo();
 
   }
 

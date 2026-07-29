@@ -13,15 +13,29 @@ public class Compra {
     private EstadoCompra estado;
 
     public void recibirMercancia() {
-        // metodo a crear
+        if (estado == EstadoCompra.PENDIENTE) {
+            estado = EstadoCompra.RECIBIDA;
+            System.out.println("Estado de mercancia: Recibido");
+        } else {
+            System.out.println("Error de recepción");
+        }
     }
 
     public void anular() {
-        // metodo a crear
+       if (estado != EstadoCompra.RECIBIDA) {
+        estado = EstadoCompra.ANULADA;
+        System.out.println("Compra anulada.")
+       } else {
+        System.out.println("Compra no puede ser anulada")
+       }
     }
 
     public Money calcularTotal() {
-        Money total = new Money(0);
-        return total;
+        Money suma = new Money(0);
+        for (LineaCompra linea : lineas) {
+            suma = suma.add(linea.calcularSubtotal());
+        }
+
+        total =suma;
     }
 }

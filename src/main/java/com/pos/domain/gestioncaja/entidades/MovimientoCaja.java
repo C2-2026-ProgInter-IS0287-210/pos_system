@@ -22,7 +22,10 @@ public class MovimientoCaja {
         this.fecha = fecha;
         this.usuario = usuario;
         this.referencia = referencia;
-    }
+
+
+                          }
+    
 
    
    

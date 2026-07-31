@@ -8,8 +8,14 @@ public class CuentaBancaria {
     private Money saldo;
     private String moneda;
 
-    public void depositar(Money monto){}
-    public void retirar(Money monto) {}
+    public void depositar(Money monto){
+        saldo = monto;
+        System.out.println("Deposito completado.");
+    }
+
+    public void retirar(Money monto) {
+        
+    }
     public void transferir (CuentaBancaria destino, Money monto){}
     public Money consultarSaldo(){}
 }

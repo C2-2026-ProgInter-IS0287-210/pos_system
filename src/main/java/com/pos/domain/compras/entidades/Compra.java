@@ -37,5 +37,6 @@ public class Compra {
         }
 
         total =suma;
+        return total;
     }
 }

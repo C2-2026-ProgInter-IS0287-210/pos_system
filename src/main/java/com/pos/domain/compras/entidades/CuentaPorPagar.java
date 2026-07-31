@@ -11,40 +11,31 @@ public class CuentaPorPagar {
     private EstadoPago estado;
     private Money saldoPendiente;
 
-    public void setMonto(Money monto) {
-        this.monto = monto;
-    }
-    public Money getMonto() {
-        return monto;
-    }
-    public void setFechaEmision(Date fechaEmision) {
+    public void getFechaEmision(Date fechaEmision) {
         this.fechaEmision = fechaEmision;
     }
-    public Date getFechaEmision() {
-        return fechaEmision;
-    } 
-    public void setFechaVencimiento(Date fechaVencimiento) {
+
+    public void getFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-    public void setSaldoPendiente(Money saldoPendiente) {
-        this.saldoPendiente = saldoPendiente;
-    }
+
     public Money getSaldoPendiente() {  
         return saldoPendiente;
     }
 
 
     public void pagar (Money monto, Money saldoPendiente) {
-        if (monto.getMonto() > 0) {
-            this.saldoPendiente = saldoPendiente;
-        }else {
-            throw new IllegalArgumentException("El monto a pagar debe ser mayor a cero.");
-        }
+        saldoPendiente = monto;
+        estado = EstadoPago.PAGADO;
+        System.out.println("Pago completado.");
     }
     public Money calcularInteresesMoratorio(){
-        return getSaldoPendiente();
-    }
+        int diasMora = getFechaEmision(fechaEmision) - getFechaVencimiento(fechaVencimiento);
+    
+        if (diasMora <= 0) {
+            return new Money(0);} 
+            
+            double interes = monto.getValor() * 0.0005 * diasMora;
+            return new Money(interes);
+
 }

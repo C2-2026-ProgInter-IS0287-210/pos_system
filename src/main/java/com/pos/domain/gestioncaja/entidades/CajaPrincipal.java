@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.com.pos.domain.ventas.valueobjets.Money;
+
 public class CajaPrincipal {
 
     // Atributos privados (-)

@@ -1,4 +1,9 @@
 package main. java. com. pos. domain. gestioncaja.entidades;
+
+import java.time.LocalDateTime;
+
+import main.java.com.pos.domain.ventas.valueobjets.Money;
+
 public class CierreCaja {
 
     // Atributos privados (-)

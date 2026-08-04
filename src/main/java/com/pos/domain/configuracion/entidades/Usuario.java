@@ -1,6 +1,6 @@
-package main.java.com.pos.domain.configuracion.entidades;
+package com.pos.domain.configuracion.entidades;
 
-import main.java.com.pos.domain.configuracion.enumerados.Permiso;
+import com.pos.domain.configuracion.enumerados.Permiso;
 
 public class Usuario {
     private String nombreUsuario;

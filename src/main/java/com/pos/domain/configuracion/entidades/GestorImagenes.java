@@ -1,7 +1,7 @@
-package main.java.com.pos.domain.configuracion.entidades;
+package com.pos.domain.configuracion.entidades;
 
-import java.util.HashMap;
-import java.util.Map;
+import util.HashMap;
+import util.Map;
 
 public class GestorImagenes {
     private Map<String, String> cache = new HashMap<>();

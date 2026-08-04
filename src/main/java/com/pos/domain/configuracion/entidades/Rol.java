@@ -1,7 +1,7 @@
-package main.java.com.pos.domain.configuracion.entidades;
-import java.util.List;
-import main.java.com.pos.domain.configuracion.enumerados.Permiso;
-import java.util.ArrayList;
+package com.pos.domain.configuracion.entidades;
+import util.List;
+import com.pos.domain.configuracion.enumerados.Permiso;
+import util.ArrayList;
 ;
 
 public class Rol {

@@ -1,14 +1,14 @@
-package main.java.com.pos.application.casosdeuso; 
+package com.pos.application.casosdeuso; 
 
 import main.java.com.pos.domain.configuracion.entidades.Usuario;
-import main.java.com.pos.infrastructure.configuracion.RepositorioUsuariosImpl;
-import main.java.com.pos.infrastructure.servicios.EncriptadorPin;
+import com.pos.infrastructure.configuracion.RepositorioUsuariosImpl;
+import com.pos.infrastructure.servicios.EncriptadorPin;
 
 public class AutenticarUsuarioCasoUso {
-    private final RepositorioUsuarios repositorioUsuarios;
+    private final RepositorioUsuariosImpl repositorioUsuarios;
 
-    public AutenticarUsuarioCasoUso(RepositorioUsuarios repositorioUsuarios) {
-        this.repositorioUsuarios = repositorioUsuarios;
+    public AutenticarUsuarioCasoUso(RepositorioUsuariosImpl repositorioUsuarios) {
+        this.RepositorioUsuariosImpl = repositorioUsuarios;
     }
 
     /**
@@ -16,7 +16,7 @@ public class AutenticarUsuarioCasoUso {
      * Retorna el usuario si el PIN/Hash coincide, o null si es inválido.
      */
     public Usuario ejecutar(String nombreUsuario, String pinIngresado) {
-        Usuario usuario = repositorioUsuarios.buscarPorNombre(nombreUsuario);
+        Usuario usuario = RepositorioUsuariosImpl.buscarPorNombre(nombreUsuario);
         
         if (usuario == null) {
             return null; // Rechazar acceso

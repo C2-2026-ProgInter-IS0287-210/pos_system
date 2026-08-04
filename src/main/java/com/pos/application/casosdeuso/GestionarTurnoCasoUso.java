@@ -1,7 +1,7 @@
-package main.java.com.pos.application.casosdeuso;
+package com.pos.application.casosdeuso;
 
-import main.java.com.pos.domain.configuracion.entidades.Turno;
-import main.java.com.pos.domain.configuracion.entidades.Usuario;
+import com.pos.domain.configuracion.entidades.Turno;
+import com.pos.domain.configuracion.entidades.Usuario;
 
 public class GestionarTurnoCasoUso {
 

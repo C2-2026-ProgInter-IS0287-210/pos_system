@@ -1,6 +1,6 @@
-package main.java.com.pos.domain.configuracion.entidades;
+package com.pos.domain.configuracion.entidades;
 
-import java.time.LocalDateTime;
+import time.LocalDateTime;
 
 public class Turno {
     private LocalDateTime horaInicio;

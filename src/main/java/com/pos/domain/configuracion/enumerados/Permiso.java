@@ -1,4 +1,4 @@
- package main.java.com.pos.domain.configuracion.enumerados;
+ package com.pos.domain.configuracion.enumerados;
 
 
 public enum Permiso {

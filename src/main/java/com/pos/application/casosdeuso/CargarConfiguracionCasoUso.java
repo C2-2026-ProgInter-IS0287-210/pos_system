@@ -1,6 +1,6 @@
-package main.java.com.pos.application.casosdeuso;
+package com.pos.application.casosdeuso;
 
-import main.java.com.pos.domain.configuracion.entidades.ConfiguracionGlobal;
+import com.pos.domain.configuracion.entidades.ConfiguracionGlobal;
 
 public class CargarConfiguracionCasoUso {
 

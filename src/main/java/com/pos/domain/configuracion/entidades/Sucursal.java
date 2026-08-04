@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.configuracion.entidades;
+package com.pos.domain.configuracion.entidades;
 
 public class Sucursal {
     private String nombre;

@@ -1,4 +1,4 @@
-package main.java.com.pos.infrastructure.persistencia.inventario;
+package com.pos.infrastructure.persistencia.inventario;
 
 import main.java.com.pos.domain.inventario.repositorios.RepositorioProductos;
 import main.java.com.pos.domain.inventario.entidades.Producto;

@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.inventario.entidades;
+package com.pos.domain.inventario.entidades;
 import java.util.ArrayList;
 import java.util.List;
 

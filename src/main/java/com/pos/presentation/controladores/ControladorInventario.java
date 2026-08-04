@@ -1,4 +1,4 @@
-package main.java.com.pos.presentation.controladores;
+package com.pos.presentation.controladores;
 
 import main.java.com.pos.domain.servicios.ServicioInventario;
 import main.java.com.pos.domain.inventario.entidades.Producto;

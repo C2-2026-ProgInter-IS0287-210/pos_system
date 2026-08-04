@@ -1,3 +1,4 @@
+package com.pos.domain.inventario.entidades;
 import java.util.List;
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package main.java.com.pos.application.inventario.casosdeuso;
+package com.pos.application.inventario.casosdeuso;
 
 import main.java.com.pos.domain.servicios.ServicioInventario;
 import main.java.com.pos.domain.inventario.entidades.Producto;

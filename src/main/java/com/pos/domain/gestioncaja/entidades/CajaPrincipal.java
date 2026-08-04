@@ -1,4 +1,4 @@
-package main. java. com. pos. domain. gestioncaja.entidades;
+package com. pos. domain. gestioncaja.entidades;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

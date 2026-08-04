@@ -1,4 +1,4 @@
-package main. java. com. pos. domain. clientes.entidades;
+package com. pos. domain. clientes.entidades;
 public class Cliente {
    
     private String id;

@@ -1,4 +1,4 @@
-package main.java.com.pos.presentation.swing;
+package com.pos.presentation.swing;
 
 public class PanelVentas {
  

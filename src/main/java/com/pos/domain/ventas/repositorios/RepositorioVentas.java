@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.ventas.repositorios;
+package com.pos.domain.ventas.repositorios;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.com.pos.application.ventas.casosdeuso;
+package com.pos.application.ventas.casosdeuso;
 
 public class DividirCuentaCasoUso {
  

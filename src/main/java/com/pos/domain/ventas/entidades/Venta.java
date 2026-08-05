@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.ventas.entidades;
+package com.pos.domain.ventas.entidades;
 
 import java.util.Date;
 

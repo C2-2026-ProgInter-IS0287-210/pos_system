@@ -1,4 +1,4 @@
-package main.java.com.pos.application.ventas.dtos;
+package com.pos.application.ventas.dtos;
 
 public class VentaDTO {
  

@@ -1,9 +1,9 @@
- package main.java.com.pos.domain.configuracion.entidades;
+ package com.pos.domain.configuracion.entidades;
 
 
 
-import main.java.com.pos.domain.configuracion.enumerados.Idioma;
-import main.java.com.pos.domain.configuracion.enumerados.Moneda;
+import com.pos.domain.configuracion.enumerados.Idioma;
+import com.pos.domain.configuracion.enumerados.Moneda;
 
 public class ConfiguracionGlobal {
     private String nombreNegocio;

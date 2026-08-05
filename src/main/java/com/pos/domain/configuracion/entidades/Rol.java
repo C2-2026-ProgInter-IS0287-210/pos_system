@@ -2,7 +2,7 @@ package com.pos.domain.configuracion.entidades;
 import util.List;
 import com.pos.domain.configuracion.enumerados.Permiso;
 import util.ArrayList;
-;
+
 
 public class Rol {
     private String nombre;

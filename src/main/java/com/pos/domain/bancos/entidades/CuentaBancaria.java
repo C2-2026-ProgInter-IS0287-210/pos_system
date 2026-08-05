@@ -1,0 +1,21 @@
+package com.pos.domain.bancos.entidades;
+import com.pos.domain.ventas.valueobjets.*;
+
+public class CuentaBancaria {
+    private String numero;
+    private String entidad;
+    private String tipo;
+    private Money saldo;
+    private String moneda;
+
+    public void depositar(Money monto){
+        saldo = monto;
+        System.out.println("Deposito completado.");
+    }
+
+    public void retirar(Money monto) {
+        
+    }
+    public void transferir (CuentaBancaria destino, Money monto){}
+    public Money consultarSaldo(){}
+}

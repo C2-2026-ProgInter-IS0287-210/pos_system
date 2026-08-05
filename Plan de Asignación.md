@@ -7,13 +7,13 @@ La siguiente distribución asigna la responsabilidad de implementación del sist
 Módulo Asignado: Contexto de Ventas
 Descripción: Encargado del núcleo transaccional principal del sistema, gestionando el ciclo de vida de una venta, los pagos y los cálculos matemáticos asociados.
 
-- Dominio (Entidades y Value Objects): Venta, LineaVenta, Pago, Recibo, Devolucion, Descuento.
+- Dominio (Entidades y Value Objects): Venta, LineaVenta, Pago, Recibo, Devolucion, Descuento, Money.
 
 - Dominio (Enumeradores): MetodoPago, EstadoVenta.
 
 - Aplicación (Casos de Uso): IniciarVentaCasoUso, PagarVentaCasoUso, SuspenderVentaCasoUso, RecuperarVentaCasoUso, AnularVentaCasoUso, DividirCuentaCasoUso.
 
-- Interfaces y Servicios: ServicioVentas, ServicioPagos.
+- Interfaces y Servicios: ServicioVentas (y su impl), ServicioPagos (y su impl).
 
 - Infraestructura y Presentación: RepositorioVentasImpl, PanelVentas, ControladorVentas.
 
@@ -28,7 +28,7 @@ Descripción: Responsable de la gestión del catálogo de productos, el control 
 
 - Aplicación (Casos de Uso): ConsultarStockCasoUso, RealizarMovimientoCasoUso, VerificarReordenCasoUso.
 
-- Interfaces y Servicios: ServicioInventario.
+- Interfaces y Servicios: ServicioInventario (y su impl).
 
 - Infraestructura y Presentación: RepositorioProductosImpl, PanelInventario, ControladorInventario.
 
@@ -43,7 +43,7 @@ Descripción: Administra el abastecimiento del negocio mediante la relación con
 
 - Aplicación (Casos de Uso): CrearCompraCasoUso, RecibirMercanciaCasoUso, RegistrarPagoProveedorCasoUso, DepositarCasoUso, RetirarCasoUso, TransferirCasoUso.
 
-- Interfaces y Servicios: ServicioCompras.
+- Interfaces y Servicios: ServicioCompras (y su impl).
 
 - Infraestructura y Presentación: RepositorioComprasImpl, RepositorioBancosImpl, PanelCompras, ControladorCompras.
 
@@ -54,7 +54,7 @@ Descripción: Encargado de la base transversal del sistema, manejando los acceso
 
 - Dominio (Entidades): Usuario, Rol, Turno, Asistencia, Sucursal, ConfiguracionGlobal, GestorImagenes.
 
-- Dominio (Enumeradores): Permiso.
+- Dominio (Enumeradores): Permiso, Idioma, Moneda.
 
 - Aplicación (Casos de Uso): AutenticarUsuarioCasoUso, GestionarTurnoCasoUso, CargarConfiguracionCasoUso.
 
@@ -73,7 +73,7 @@ Descripción: Responsable del flujo de dinero en efectivo en el punto de venta (
 
 - Aplicación (Casos de Uso): AbrirCajaCasoUso, CerrarCajaCasoUso, RegistrarMovimientoCajaCasoUso, RegistrarClienteCasoUso, ActualizarClienteCasoUso.
 
-- Interfaces y Servicios: ServicioCaja.
+- Interfaces y Servicios: ServicioCaja (y su impl).
 
 - Infraestructura y Presentación: RepositorioCajaImpl, RepositorioClientesImpl, PanelCaja, ControladorCaja.
 
@@ -82,13 +82,13 @@ Descripción: Responsable del flujo de dinero en efectivo en el punto de venta (
 Módulo Asignado: Contexto de Informes, Carga Masiva y Presentación Principal
 Descripción: Encargado de la consolidación de datos, la importación de archivos externos y la orquestación de la interfaz gráfica principal donde se unen todos los módulos.
 
-- Dominio (Entidades): Informe, Dashboard.
+- Dominio (Entidades): Informe, Dashboard, Reporte.
 
-- Servicios (Carga Masiva): ImportadorDatos, ServicioImportacion (Interfaces).
+- Servicios (Carga Masiva): ServicioImportacion (Interface) e ImportadorDatos (Infraestructura).
 
 - Aplicación (Casos de Uso): GenerarInformeVentasCasoUso, GenerarDashboardCasoUso, ImportarProductosCasoUso, ImportarClientesCasoUso.
 
-- Interfaces y Servicios: ServicioInformes.
+- Interfaces y Servicios: ServicioInformes (y su impl).
 
 - Infraestructura y Presentación: RepositorioInformesImpl, ImportadorCSV, ImportadorExcel, VentanaPrincipal (Clase que integra todos los paneles y controladores).
 

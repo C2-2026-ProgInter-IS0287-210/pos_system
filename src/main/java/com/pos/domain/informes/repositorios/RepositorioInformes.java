@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.informes.repositorios;
+package com.pos.domain.informes.repositorios;
 
 import java.time.LocalDate;
 import java.util.List;

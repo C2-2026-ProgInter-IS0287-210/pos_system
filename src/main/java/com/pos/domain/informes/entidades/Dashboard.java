@@ -1,5 +1,5 @@
 
-package main.java.com.pos.domain.informes.entidades; 
+package com.pos.domain.informes.entidades; 
 public class Dashboard{
 
 

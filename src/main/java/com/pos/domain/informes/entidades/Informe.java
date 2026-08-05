@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.informes.entidades;
+package com.pos.domain.informes.entidades;
 import java.time.LocalDate;
 
 public class Informe {

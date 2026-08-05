@@ -1,8 +1,8 @@
 package com.pos.infrastructure.persistencia.inventario;
 
-import main.java.com.pos.domain.inventario.repositorios.RepositorioProductos;
-import main.java.com.pos.domain.inventario.entidades.Producto;
-import main.java.com.pos.domain.inventario.entidades.Categoria;
+import com.pos.domain.inventario.repositorios.RepositorioProductos;
+import com.pos.domain.inventario.entidades.Producto;
+import com.pos.domain.inventario.entidades.Categoria;
 
 import java.util.List;
 import java.util.Map;

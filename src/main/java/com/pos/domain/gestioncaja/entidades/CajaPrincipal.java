@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.com.pos.domain.ventas.valueobjets.Money;
+import com.pos.domain.ventas.valueobjets.Money;
 
 public class CajaPrincipal {
 

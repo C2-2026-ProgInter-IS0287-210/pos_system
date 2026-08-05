@@ -2,7 +2,7 @@ package com. pos. domain. gestioncaja.entidades;
 
 import java.time.LocalDateTime;
 
-import main.java.com.pos.domain.ventas.valueobjets.Money;
+import com.pos.domain.ventas.valueobjets.Money;
 
 public class CierreCaja {
 

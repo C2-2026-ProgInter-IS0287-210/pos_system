@@ -1,9 +1,9 @@
-package main.java.com.pos.domain.servicios;
+package com.pos.domain.servicios;
 
 import java.util.List;
 
-import main.java.com.pos.domain.ventas.entidades.Pago;
-import main.java.com.pos.domain.ventas.entidades.Venta;
+import com.pos.domain.ventas.entidades.Pago;
+import com.pos.domain.ventas.entidades.Venta;
 
 public class ServicioVentas {
  

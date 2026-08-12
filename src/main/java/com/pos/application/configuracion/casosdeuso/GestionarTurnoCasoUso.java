@@ -1,4 +1,4 @@
-package com.pos.application.casosdeuso;
+package com.pos.application.configuracion.casosdeuso;
 
 import com.pos.domain.configuracion.entidades.Turno;
 import com.pos.domain.configuracion.entidades.Usuario;

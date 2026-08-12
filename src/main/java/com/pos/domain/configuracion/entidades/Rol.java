@@ -27,7 +27,7 @@ public class Rol {
         return this.permisos.contains(p);
     }
 
-    // Getters y Setters
+    
     public String getNombre() {
         return nombre;
     }

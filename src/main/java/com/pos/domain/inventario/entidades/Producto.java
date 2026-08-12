@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.pos.domain.ventas.valueobjects.Money;
 
-class Producto {
+ public class Producto { 
 
     private String sku;
     private String codigoBarras;

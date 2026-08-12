@@ -1,5 +1,5 @@
 package com.pos.domain.inventario.entidades;
-class Stock {
+ public class Stock {
 
     private int cantidadActual;
     private int nivelMinimo;

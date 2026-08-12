@@ -1,6 +1,6 @@
-package com.pos.application.casosdeuso; 
+package com.pos.application.configuracion.casosdeuso; 
 
-import main.java.com.pos.domain.configuracion.entidades.Usuario;
+import com.pos.domain.configuracion.entidades.Usuario;
 import com.pos.infrastructure.configuracion.RepositorioUsuariosImpl;
 import com.pos.infrastructure.servicios.EncriptadorPin;
 

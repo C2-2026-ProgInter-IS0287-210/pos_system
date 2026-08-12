@@ -34,8 +34,5 @@ public class ServicioInventarioImpl implements ServicioInventario {
         return p.getStock().verificarPuntoReorden();
     }
 
-    @Override
-    public List<Lote> obtenerLotes(Producto p) {
-        return p.getLotes();
-    }
+   
 }

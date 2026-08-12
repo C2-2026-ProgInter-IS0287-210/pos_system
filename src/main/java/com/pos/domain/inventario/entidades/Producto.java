@@ -1,6 +1,9 @@
 package com.pos.domain.inventario.entidades;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import com.pos.domain.ventas.valueobjects.Money;
 
 class Producto {
 
@@ -42,13 +45,15 @@ class Producto {
         lotes.add(lote);
     }
 
-    public double calcularMargen() {
-        double precioVal = precio.getMonto();
-        double costoVal = costo.getMonto();
-        if (costoVal == 0) {
+    public BigDecimal calcularMargen() {
+        BigDecimal precioVal = precio.getValor();
+        BigDecimal costoVal = costo.getValor();
+        if (costoVal == BigDecimal.ZERO) {
             throw new ArithmeticException("No se puede calcular el margen con costo igual a 0.");
         }
-        return ((precioVal - costoVal) / costoVal) * 100;
+        return precioVal.subtract(costoVal)
+        .divide(costoVal, 4, RoundingMode.HALF_UP)
+        .multiply(BigDecimal.valueOf(100));
     }
 
     public void actualizarPrecio(Money nuevoPrecio) {

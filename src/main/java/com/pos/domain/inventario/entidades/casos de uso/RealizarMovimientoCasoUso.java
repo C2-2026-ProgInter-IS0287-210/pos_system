@@ -1,9 +1,9 @@
 package com.pos.application.inventario.casosdeuso;
 
-import main.java.com.pos.domain.servicios.ServicioInventario;
-import main.java.com.pos.domain.inventario.entidades.Producto;
-import main.java.com.pos.domain.inventario.enumerados.TipoMovimiento;
-import main.java.com.pos.domain.inventario.repositorios.RepositorioProductos;
+import com.pos.domain.servicios.ServicioInventario;
+import com.pos.domain.inventario.entidades.Producto;
+import com.pos.domain.inventario.enumerados.TipoMovimiento;
+import com.pos.domain.inventario.repositorios.RepositorioProductos;
 
 public class RealizarMovimientoCasoUso {
 

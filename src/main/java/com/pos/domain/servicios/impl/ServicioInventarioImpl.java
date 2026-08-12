@@ -1,12 +1,12 @@
-package main.java.com.pos.domain.servicios.impl;
+package com.pos.domain.servicios.impl;
 
-import main.java.com.pos.domain.servicios.ServicioInventario;
-import main.java.com.pos.domain.inventario.entidades.Producto;
-import main.java.com.pos.domain.inventario.entidades.Stock;
-import main.java.com.pos.domain.inventario.entidades.Lote;
-import main.java.com.pos.domain.inventario.entidades.MovimientoInventario;
-import main.java.com.pos.domain.inventario.enumerados.TipoMovimiento;
-import main.java.com.pos.domain.inventario.repositorios.RepositorioProductos;
+import com.pos.domain.servicios.ServicioInventario;
+import com.pos.domain.inventario.entidades.Producto;
+import com.pos.domain.inventario.entidades.Stock;
+import com.pos.domain.inventario.entidades.Lote;
+import com.pos.domain.inventario.entidades.MovimientoInventario;
+import com.pos.domain.inventario.enumerados.TipoMovimiento;
+import com.pos.domain.inventario.repositorios.RepositorioProductos;
 
 import java.util.List;
 
@@ -34,8 +34,5 @@ public class ServicioInventarioImpl implements ServicioInventario {
         return p.getStock().verificarPuntoReorden();
     }
 
-    @Override
-    public List<Lote> obtenerLotes(Producto p) {
-        return p.getLotes();
-    }
+   
 }

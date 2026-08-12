@@ -1,4 +1,5 @@
 package com.pos.domain.inventario.entidades;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Comparator;
@@ -81,3 +82,10 @@ public class Lote {
     public String toString() {
         return "Lote{" +
                 "numeroLote='" + numeroLote + '\'' +
+                ", fechaFabricacion=" + fechaFabricacion +
+                ", fechaCaducidad=" + fechaCaducidad +
+                ", cantidadInicial=" + cantidadInicial +
+                ", cantidadDisponible=" + cantidadDisponible +
+                '}';
+    }
+}

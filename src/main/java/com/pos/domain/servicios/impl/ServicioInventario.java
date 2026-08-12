@@ -1,4 +1,4 @@
-package main.java.com.pos.domain.servicios;
+package com.pos.domain.servicios;
 
 public interface ServicioInventario {
     Stock consultarStock(Producto p);

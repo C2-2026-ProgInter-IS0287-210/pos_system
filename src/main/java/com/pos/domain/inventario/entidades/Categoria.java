@@ -1,5 +1,5 @@
 package com.pos.domain.inventario.entidades;
-class Categoria {
+ public class Categoria {
 
     private String nombre;
     private String descripcion;

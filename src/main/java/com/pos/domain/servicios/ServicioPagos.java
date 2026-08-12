@@ -1,7 +1,8 @@
-package main.java.com.pos.domain.servicios;
+package com.pos.domain.servicios;
 
-import main.java.com.pos.domain.ventas.entidades.Pago;
-import main.java.com.pos.domain.ventas.enumeradores.MetodoPago;
+import com.pos.domain.ventas.entidades.Pago;
+import com.pos.domain.ventas.enumeradores.MetodoPago;
+import com.pos.domain.ventas.valueobjects.Money;
 
 public class ServicioPagos {
 

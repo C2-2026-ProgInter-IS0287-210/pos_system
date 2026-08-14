@@ -1,4 +1,4 @@
-package main.java.com.pos.application.inventario.dtos;
+package com.pos.domain.inventario.entidades.casosdeuso.dtos;
 
 public class ProductoDTO {
 

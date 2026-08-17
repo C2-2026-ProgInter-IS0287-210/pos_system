@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación DDD - Sprint 2</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Highlight.js for code formatting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/java.min.js"></script>
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- DOMPurify to prevent XSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-effect">
+            <div class="sidebar-header">
+                <div class="logo-box"></div>
+                <h2>Prog. Intermedia</h2>
+                <p>IS0287 - 210</p>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-doc="plan">
+                    <span class="icon">📋</span> Plan de Trabajo
+                </button>
+                <button class="nav-btn" data-doc="guia">
+                    <span class="icon">🎓</span> Guía de Clase
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Sistema POS - DDD</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="glass-effect content-wrapper">
+                <div id="content-container" class="markdown-body fade-in">
+                    <!-- Content will be injected here by app.js -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Background decorative elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Data scripts to avoid multiline literal escaping issues -->
+    <script type="text/markdown" id="md-plan">
+# Plan de Orientación y Trabajo - Sprint 2 (Historias de Usuario Pares)
+
+Este documento detalla el plan de trabajo propuesto para orientar a los estudiantes en la corrección de las deficiencias actuales de su código (Sprint 1) y guiar la implementación de las historias de usuario pares del Sprint 2, aplicando correctamente Domain-Driven Design (DDD) y SOLID.
+
+## 1. Validación del Estado Actual y Deficiencias Encontradas
+
+Tras la revisión del repositorio, se ha evidenciado que la estructura inicial existe, pero presenta deficiencias conceptuales y técnicas graves que deben abordarse antes de avanzar:
+
+1. **Estructura de Paquetes Incorrecta:** Todos los archivos tienen la declaración `package main.java.com.pos...` en lugar de `package com.pos...`. Esto generará problemas de compilación y de reconocimiento del *Source Root* en cualquier IDE (Eclipse, IntelliJ, NetBeans).
+2. **Violación del Principio de Inversión de Dependencias (DIP):** Las definiciones de Repositorios (ej. `RepositorioVentas`) y Servicios de Dominio (ej. `ServicioVentas`) están creadas como `class` en lugar de `interface`. Esto impide que la capa de Infraestructura los implemente correctamente y genera un fuerte acoplamiento.
+3. **Servicios de Dominio con Estado (Stateful):** Clases como `ServicioVentas` contienen variables de instancia (ej. `Venta pre; //Variable temporal`). Los servicios de dominio deben ser **sin estado (stateless)**.
+4. **Implementaciones Vacías:** Las clases de infraestructura (ej. `RepositorioVentasImpl`) y los Casos de Uso (ej. `IniciarVentaCasoUso`) están completamente vacías. No hay orquestación de la lógica.
+5. **Value Objects Incompletos y Mutables:** Clases como `Descuento` carecen de la lógica de inmutabilidad y de comportamiento de negocio propio.
+
+> [!WARNING]
+> Si los estudiantes intentan implementar el Sprint 2 sin corregir estos errores base, el código se volverá inmanejable y no cumplirá con los objetivos de la arquitectura DDD ni los principios SOLID.
+
+---
+
+## 2. Explicación Pedagógica de la Arquitectura DDD
+
+Para aclarar las dudas de los estudiantes, se recomienda realizar una sesión (o proveer un documento) explicando los siguientes conceptos clave de su proyecto:
+
+### A. Las Capas del Sistema (Cebolla/Clean Architecture)
+- **Dominio (`domain`):** El corazón del software. Aquí viven las reglas de negocio, puras y sin dependencias externas (ni bases de datos, ni interfaces gráficas).
+- **Aplicación (`application`):** La orquestación. Aquí viven los Casos de Uso. Un caso de uso recibe una petición de la interfaz, usa los repositorios para buscar entidades, ejecuta lógica del dominio y guarda los cambios.
+- **Infraestructura (`infrastructure`):** El contacto con el mundo exterior (bases de datos, archivos, frameworks). Aquí es donde se conectan a MySQL, leen archivos CSV, etc.
+- **Presentación (`presentation`):** La interfaz de usuario gráfica (Swing, Controladores). 
+
+### B. Elementos del Dominio
+- **Entidades (`entidades`):** Objetos con una **identidad única** que persiste en el tiempo (ej. `Venta`, `Producto`, `Cliente`). Su estado puede cambiar, pero siguen siendo el mismo concepto.
+- **Value Objects (`valueobjects`):** Objetos que se definen por sus atributos, **no tienen identidad única** y deben ser **inmutables** (ej. `Money`, `Descuento`). Si cambia su valor, es un objeto completamente nuevo.
+- **Enumeradores (`enumeradores` / `enumerados`):** Definen un conjunto fijo de valores (ej. `EstadoVenta`, `TipoMovimiento`). Ayudan a evitar strings quemados ("magics strings").
+- **Interfaces de Repositorio (`repositorios`):** Contratos (solo firmas de métodos) que declaran cómo se guardan o recuperan los datos. **No tienen código de acceso a datos**.
+- **Servicios de Dominio (`servicios`):** Interfaces que definen reglas de negocio complejas que involucran a múltiples entidades.
+
+### C. Elementos de Aplicación e Infraestructura
+- **Casos de Uso (`casosdeuso`):** Clases que representan una acción específica del usuario (ej. `AnularVentaCasoUso`). Coordinan el flujo.
+- **Implementaciones (`impl`):** Clases reales en Infraestructura que implementan (con `implements`) las interfaces del dominio (ej. `RepositorioVentasImpl implements RepositorioVentas`).
+
+---
+
+## 3. Plan de Trabajo para el Sprint 2 (Historias Pares)
+
+Se propone el siguiente plan de acción paso a paso para los 6 estudiantes:
+
+### Fase 1: Refactorización y Corrección del Sprint 1 (Grupal e Individual)
+Antes de iniciar código nuevo, cada estudiante debe aplicar las siguientes correcciones a sus respectivos módulos:
+1. **Corregir Paquetes:** Usar el refactor del IDE para eliminar el `main.java.` de todas las declaraciones de paquete.
+2. **Convertir a Interfaces:** Cambiar `public class` a `public interface` en todos los archivos dentro de los paquetes `repositorios` y `servicios`. Eliminar el código del cuerpo de los métodos en estas interfaces (deben terminar en punto y coma `;`).
+3. **Limpiar Estado:** Eliminar cualquier variable de estado temporal dentro de los servicios e interfaces.
+4. **Implementar las Interfaces:** Hacer que las clases en `infrastructure/...` utilicen la palabra clave `implements` (ej. `public class RepositorioVentasImpl implements RepositorioVentas`) y hacer Overrides de los métodos.
+
+### Fase 2: Implementación de Historias de Usuario Pares
+Cada estudiante abordará su segunda historia:
+
+#### 1. Cristian Cruz (Ventas) - **US-02: Devoluciones y Descuentos**
+- **Value Object `Descuento`:** Hacerlo inmutable. Implementar la lógica matemática en el método `aplicar(Money base)`.
+- **Entidad `Devolucion`:** Conectarla con una `Venta` existente.
+- **ServicioVentasImpl:** Implementar la lógica para aprobar devoluciones y validar reglas de negocio.
+
+#### 2. Juan Pablo Ocampo (Inventario) - **US-04: Registro de Movimientos Físicos**
+- **Enum `TipoMovimiento`:** Crear este enumerador (ENTRADA, SALIDA, AJUSTE) que falta en el código.
+- **Entidad `MovimientoInventario`:** Desarrollar la estructura que conecte el `TipoMovimiento` con la cantidad y el `Producto`.
+- **Caso de Uso `RealizarMovimientoCasoUso`:** Programar la lógica que reciba la petición, actualice el `Stock` e inserte el registro de movimiento.
+
+#### 3. Brisa Juliana Morales (Compras y Bancos) - **US-06: Operaciones Bancarias y Pagos**
+- **Casos de Uso Bancarios:** Completar `DepositarCasoUso`, `RetirarCasoUso`, `TransferirCasoUso`.
+- **Relación de Entidades:** Conectar el pago de la `CuentaPorPagar` con la deducción de saldo en la `CuentaBancaria`. Generar instancias de `MovimientoBancario`.
+
+#### 4. Juan José Díaz (Configuración) - **US-08: Gestión de Turnos y Parámetros Globales**
+- **Entidad `Turno` y `Asistencia`:** Relacionar estas entidades.
+- **Caso de Uso `GestionarTurnoCasoUso`:** Crear la lógica para iniciar un turno y vincularlo al `Usuario` autenticado.
+- **Configuración Global:** Implementar persistencia básica para cargar y guardar los parámetros (ej. IVA).
+
+#### 5. Diego Alejandro Manrique (Caja y Clientes) - **US-10: Fidelización de Clientes**
+- **Casos de Uso Faltantes:** Crear las clases `RegistrarClienteCasoUso` y `ActualizarClienteCasoUso` (actualmente no existen en el paquete `gestioncaja`).
+- **Lógica de Puntos:** Implementar la suma de puntos en la `CuentaFidelidad` y la lógica de consumo para `TarjetaRegalo`.
+
+#### 6. Juan Felippe Murillo (Informes y Carga Masiva) - **US-12: Orquestación UI e Importación**
+- **Caso de Uso `ImportarProductosCasoUso`:** Programar la lógica.
+- **Infraestructura `ImportadorCSV` / `ImportadorExcel`:** Implementar el parsing real de los archivos usando la interfaz `ServicioImportacion`.
+- **Patrón Facade/Controller en `VentanaPrincipal`:** Asegurar la inyección de dependencias correcta para cambiar entre paneles manteniendo el estado.
+    </script>
+    
+    <script type="text/markdown" id="md-guia">
+# Guía para la Clase: Correcciones de DDD y Sprint 2
+
+Esta guía está diseñada para que la presentes a tus estudiantes. Contiene la explicación de las correcciones que se hicieron a nivel arquitectónico y expone el **Módulo de Ventas** como la **Implementación de Referencia** perfecta para que ellos se guíen en la implementación de sus historias de usuario pares.
+
+---
+
+## 1. Corrección de Paquetes (Source Root)
+> [!WARNING]
+> Todo el proyecto tenía un error crítico: los paquetes iniciaban con `main.java.com.pos`. En Java, si la carpeta raíz de código es `src/main/java`, los paquetes deben iniciar directamente desde la siguiente carpeta, es decir, `com.pos`. 
+**Resolución:** Se ha ejecutado un script automático que corrigió la definición de `package` en los casi 50 archivos del proyecto. Esto asegura que el IDE compile correctamente.
+
+---
+
+## 2. El Principio de Inversión de Dependencias (DIP)
+
+En el Sprint 1, los estudiantes crearon sus repositorios y servicios de dominio como **Clases (`class`)** en lugar de **Interfaces (`interface`)**. 
+
+> [!IMPORTANT]
+> En DDD, la capa de Dominio define las reglas y contratos (interfaces), pero **NUNCA** implementa detalles técnicos (como conectarse a una base de datos). La capa de Infraestructura es la que implementa esas interfaces.
+
+### ❌ Cómo estaba (Error):
+```java
+// Estaba como clase en la capa de Dominio
+public class RepositorioVentas {
+    public void guardar(Venta venta){
+        // No debería haber código aquí
+    }
+}
+```
+
+### ✅ Cómo quedó (Implementación de Referencia):
+Revisen el archivo `RepositorioVentas.java`. Ahora es una **Interfaz**:
+```java
+public interface RepositorioVentas {
+    void guardar(Venta venta);
+    Venta buscarPorId(String id);
+    List<Venta> buscarPorFecha(Date inicio, Date fin);
+}
+```
+Y en la capa de **Infraestructura**, encontramos la clase que la implementa, `RepositorioVentasImpl.java`:
+```java
+public class RepositorioVentasImpl implements RepositorioVentas {
+    @Override
+    public void guardar(Venta venta) {
+        // Aquí va la lógica real de persistencia en base de datos
+    }
+    // ...
+}
+```
+**Instrucción para el equipo:** Cada estudiante debe convertir sus clases en `domain/.../repositorios` y `domain/.../servicios` a **Interfaces**.
+
+---
+
+## 3. Servicios de Dominio Sin Estado (Stateless)
+
+Los servicios de dominio orquestan lógica de negocio compleja, pero **no deben guardar el estado de las variables**.
+
+> [!CAUTION]
+> En `ServicioVentas` había variables temporales declaradas a nivel de clase (`Venta pre;`). Esto causa bugs graves si varios usuarios usan el sistema a la vez, porque compartirían la misma variable.
+
+Revisen `ServicioVentas.java` y `ServicioVentasImpl.java` para ver cómo ahora el servicio devuelve las instancias nuevas o recibe los objetos por parámetro, sin guardar variables globales.
+
+---
+
+## 4. Value Objects (Objetos de Valor)
+
+Los Objetos de Valor se definen por sus propiedades (no tienen un ID) y deben ser **Inmutables** (no tienen métodos *setters*). Si un valor cambia, se crea un nuevo objeto.
+
+Un excelente ejemplo que hizo un estudiante fue `Money`. Sin embargo, `Descuento.java` (US-02) no aplicaba estas reglas. 
+
+### ✅ Implementación de Referencia en Descuento:
+Hemos refactorizado el Value Object `Descuento` usando el excelente `Money` que ya tenían:
+
+```java
+public final class Descuento {
+    private final double porcentaje;
+    private final Money montoFijo;
+    private final boolean esPorcentaje;
+
+    // Constructores privados obligan a usar métodos semánticos (Factory Methods)
+    private Descuento(double porcentaje, Money montoFijo, boolean esPorcentaje) { ... }
+
+    public static Descuento porPorcentaje(double porcentaje) { ... }
+    public static Descuento porMontoFijo(Money montoFijo) { ... }
+
+    // El comportamiento y la lógica de negocio vive aquí
+    public Money aplicar(Money base) {
+        Money montoDescontado;
+        if (esPorcentaje) {
+            montoDescontado = base.multiplicar(porcentaje / 100.0);
+        } else {
+            montoDescontado = montoFijo;
+        }
+        return base.restar(montoDescontado);
+    }
+}
+```
+
+---
+
+## 5. Tarea para el Sprint 2
+
+Con el proyecto saneado (paquetes corregidos) y con el **Módulo de Ventas** refactorizado para usarse de guía, cada estudiante debe:
+
+1. **Revisar su módulo:** Eliminar estado de sus servicios y convertir todo a interfaces/implementaciones donde corresponda.
+2. **Implementar las historias pares:** (ej. Juan Pablo implementará `TipoMovimiento` y `RealizarMovimientoCasoUso`, Brisa implementará `DepositarCasoUso` con su `MovimientoBancario`, etc.).
+3. **Casos de Uso:** Implementar el código real dentro de los Casos de Uso del paquete `application`, asegurándose de inyectar las interfaces (ej. `RepositorioVentas`) para no depender directamente de la infraestructura.
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

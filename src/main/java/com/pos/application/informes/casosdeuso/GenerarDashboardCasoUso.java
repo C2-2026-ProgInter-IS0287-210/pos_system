@@ -5,7 +5,7 @@ import com.pos.domain.informes.servicios.ServicioInformes;
 
 public class GenerarDashboardCasoUso {
 
-```
+//```/
 private final ServicioInformes servicioInformes;
 
 public GenerarDashboardCasoUso(ServicioInformes servicioInformes) {
@@ -15,6 +15,5 @@ public GenerarDashboardCasoUso(ServicioInformes servicioInformes) {
 public Dashboard ejecutar() {
     return servicioInformes.generarDashboard();
 }
-```
 
 }

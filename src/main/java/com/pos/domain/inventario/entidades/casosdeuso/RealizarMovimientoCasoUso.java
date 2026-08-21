@@ -1,24 +1,25 @@
-package com.pos.application.inventario.casosdeuso;
+package com.pos.domain.inventario.entidades.casosdeuso;
 
 import com.pos.domain.servicios.ServicioInventario;
 import com.pos.domain.inventario.entidades.Producto;
+import com.pos.domain.inventario.enumerados.TipoMovimiento;
 import com.pos.domain.inventario.repositorios.RepositorioProductos;
 
-public class VerificarReordenCasoUso {
+public class RealizarMovimientoCasoUso {
 
     private ServicioInventario servicioInventario;
     private RepositorioProductos repositorioProductos;
 
-    public VerificarReordenCasoUso(ServicioInventario servicioInventario, RepositorioProductos repositorioProductos) {
+    public RealizarMovimientoCasoUso(ServicioInventario servicioInventario, RepositorioProductos repositorioProductos) {
         this.servicioInventario = servicioInventario;
         this.repositorioProductos = repositorioProductos;
     }
 
-    public boolean ejecutar(String sku) {
+    public void ejecutar(String sku, int cantidad, TipoMovimiento tipo, String motivo) {
         Producto producto = repositorioProductos.buscarPorSku(sku);
         if (producto == null) {
             throw new IllegalArgumentException("Producto no encontrado: " + sku);
         }
-        return servicioInventario.verificarPuntoReorden(producto);
+        servicioInventario.realizarMovimiento(producto, cantidad, tipo, motivo);
     }
 }

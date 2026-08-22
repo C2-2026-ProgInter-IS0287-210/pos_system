@@ -3,7 +3,7 @@ package com.pos.infrastructure.persistencia.configuracion;
 import com.pos.domain.configuracion.entidades.Rol;
 import com.pos.domain.configuracion.entidades.Usuario;
 import com.pos.domain.configuracion.enumerados.Permiso;
-import com.pos.domain.configuracion.repositorios.RepositorioUsuarios;
+import com.pos.domain.configuracion.RepositorioUsuarios;
 import com.pos.infrastructure.servicios.EncriptadorPin;
 
 import java.util.ArrayList;

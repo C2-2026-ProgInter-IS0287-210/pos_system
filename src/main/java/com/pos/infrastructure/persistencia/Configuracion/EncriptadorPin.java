@@ -1,8 +1,9 @@
 package com.pos.infrastructure.persistencia.Configuracion;
 
-import com.pos.domain.configuracion.entidades.ServicioEncriptacion;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.pos.domain.configuracion.servicio.ServicioEncriptacion;
 
 public class EncriptadorPin implements ServicioEncriptacion {
 

@@ -23,7 +23,7 @@ return v;
 
 public  List<Venta> buscarPorFecha(Date Inicio , Date Fin){
 
- 
+ //Este es necesario a la base
 
 }
 

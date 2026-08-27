@@ -39,7 +39,7 @@ public class Devolucion {
       throw new IllegalStateException(
           "No se puede procesar una devolución sin monto.");
     }
-
+//To do : Implementar el proceso de reembolso 
   }
 
   public boolean autorizar(String codigo) {
@@ -62,3 +62,4 @@ public class Devolucion {
   }
 
 }
+//Evaluar regla cuando permite generar el reembolso

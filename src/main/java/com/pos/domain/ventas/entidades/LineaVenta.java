@@ -9,9 +9,7 @@ public class LineaVenta {
   private Money precioUnitario;
   private Money descuento;
 
-  public LineaVenta(
-      int cantidad,
-      Money precioUnitario) {
+  public LineaVenta( int cantidad,Money precioUnitario) {
 
     if (cantidad <= 0) {
 

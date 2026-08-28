@@ -1,8 +1,10 @@
-public class ControladosCompras {
-    private ServicioCompras servicios;
+public class ControladorCompras {
+    private RecibirMercanciaCasoUso recibirMercanciaCasoUso;
+    public ControladorCompras() {
+        recibirMercanciaCasoUso = new RecibirMercanciaCasoUso();
+    }
 
-    public void crearCompra (Proveedor prov, List<LineaCompra> lineas){}
-    public void registrarPagoProveedor (CuentaPorPagar cpp, Money monto){}
-    public void recibirMercancia (Compra compra){}
-    
+    public void recibirMercancia(Compra compra) {
+        recibirMercanciaCasoUso.ejecutar(compra);
+    }
 }

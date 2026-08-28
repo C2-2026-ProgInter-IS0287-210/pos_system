@@ -8,8 +8,9 @@ public class LineaCompra{
     private Money descuento;
     private Double subtotal;
 
-    public Money calcularSubtotal(){
-        subtotal = (cantidad* precioUnitario.getValor())- descuento.getValor();
-        return new Money(subtotal);
+    public Money calcularSubtotal() {
+        Money subtotal = precioUnitario.multiplicar(cantidad);
+        subtotal = subtotal.restar(descuento);
+        return subtotal;
     }
 }

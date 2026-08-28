@@ -1,5 +1,6 @@
 package com.pos.domain.compras.entidades;
-import java.util.Date;
+import java.util.LocalDate;
+import java.time.temporal.ChronoUnit;
 import com.pos.domain.compras.enumerados.EstadoPago;
 import com.pos.domain.ventas.valueobjets.*;
 
@@ -11,31 +12,42 @@ public class CuentaPorPagar {
     private EstadoPago estado;
     private Money saldoPendiente;
 
-    public void getFechaEmision(Date fechaEmision) {
+    public CuentaPorPagar(Money monto, LocalDate fechaEmision, LocalDate fechaVencimiento) {
+        this.monto = monto;
         this.fechaEmision = fechaEmision;
-    }
-
-    public void getFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+        this.saldoPendiente = monto;
+        this.estado = EstadoPago.PENDIENTE;
     }
-
-    public Money getSaldoPendiente() {  
-        return saldoPendiente;
-    }
-
-
-    public void pagar (Money monto, Money saldoPendiente) {
-        saldoPendiente = monto;
-        estado = EstadoPago.PAGADO;
-        System.out.println("Pago completado.");
-    }
-    public Money calcularInteresesMoratorio(){
-        int diasMora = getFechaEmision(fechaEmision) - getFechaVencimiento(fechaVencimiento);
     
-        if (diasMora <= 0) {
-            return new Money(0);} 
-            
-            double interes = monto.getValor() * 0.0005 * diasMora;
-            return new Money(interes);
+    public void pagar(Money monto) {
+    if (monto.getValor() >= saldoPendiente.getValor()) {
+        saldoPendiente = new Money(0);
+        estado = EstadoPago.PAGADO;
+    } else {
+        saldoPendiente = saldoPendiente.restar(monto);
+    }
+}
 
+
+    }
+    
+     public Money calcularInteresMoratorio() {
+        if (fechaPago == null) {
+            return new Money(0);
+        }
+        if (!fechaPago.isAfter(fechaVencimiento)) {
+            return new Money(0);
+        }
+        long diasMora = ChronoUnit.DAYS.between(
+                fechaVencimiento,
+                fechaPago
+        );
+        double tasaInteres = 0.0005;
+        double interes = monto.getValor()
+                * tasaInteres
+                * diasMora;
+
+        return new Money(interes);
+    }
 }

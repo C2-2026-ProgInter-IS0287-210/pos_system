@@ -6,6 +6,15 @@ public class Proveedor {
     private String direccion;
     private String telefono;
     private String email;
+
+    public Proveedor(String nombre, String contacto, 
+    String direccion, String telefono, String email) {
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+    }
     
     public void actualizarDatos(String nombre, String contacto, String direccion, String telefono, String email) {
         this.nombre = nombre;

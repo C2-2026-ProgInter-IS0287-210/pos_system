@@ -11,23 +11,33 @@ public class Compra {
     private Date fecha;
     private Money total;
     private EstadoCompra estado;
+    private Proveedor proveedor;
+    private List<LineaCompra> lineas;
+    private CuentaPorPagar cuentaPorPagar;
+
+    public Compra(String id, LocalDate fecha, Proveedor proveedor) {
+
+    this.id = id;
+    this.fecha = fecha;
+    this.proveedor = proveedor;
+    this.lineas = new ArrayList<>();
+    this.total = new Money(0);
+    this.estado = EstadoCompra.PENDIENTE;
+    }
 
     public void recibirMercancia() {
-        if (estado == EstadoCompra.PENDIENTE) {
-            estado = EstadoCompra.RECIBIDA;
-            System.out.println("Estado de mercancia: Recibido");
-        } else {
-            System.out.println("Error de recepción");
+        if (estado != EstadoCompra.PENDIENTE) {
+            return;
         }
+        calcularTotal();
+        estado = EstadoCompra.RECIBIDA;
+        cuentaPorPagar = new CuentaPorPagar(total, fecha, fecha.plusDays(30));
     }
 
     public void anular() {
-       if (estado != EstadoCompra.RECIBIDA) {
-        estado = EstadoCompra.ANULADA;
-        System.out.println("Compra anulada.")
-       } else {
-        System.out.println("Compra no puede ser anulada")
-       }
+        if (estado == EstadoCompra.PENDIENTE) {
+            estado = EstadoCompra.ANULADA;
+        }
     }
 
     public Money calcularTotal() {
@@ -35,7 +45,6 @@ public class Compra {
         for (LineaCompra linea : lineas) {
             suma = suma.add(linea.calcularSubtotal());
         }
-
         total =suma;
         return total;
     }
